@@ -1,0 +1,50 @@
+{
+  "name": "compliance-platform-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dual-frontend compliance platform with SharePoint and standalone deployments",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "pnpm --filter @compliance/backend dev",
+    "dev:frontend": "pnpm --filter @compliance/frontend-standalone dev",
+    "dev:spfx": "pnpm --filter @compliance/frontend-spfx serve",
+    "build": "pnpm --filter @compliance/shared-components build && pnpm --filter @compliance/frontend-standalone build && pnpm --filter @compliance/frontend-spfx build",
+    "build:shared": "pnpm --filter @compliance/shared-components build",
+    "build:backend": "pnpm --filter @compliance/backend build",
+    "build:frontend": "pnpm --filter @compliance/frontend-standalone build",
+    "build:spfx": "pnpm --filter @compliance/frontend-spfx build",
+    "test": "pnpm --recursive test",
+    "clean": "pnpm --recursive clean && rm -rf node_modules",
+    "install:all": "pnpm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "lerna": "^8.0.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "node-sass": "npm:sass@^1.97.2"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KulbirJ/compliance-platform.git"
+  },
+  "keywords": [
+    "compliance",
+    "nist-csf",
+    "threat-modeling",
+    "sharepoint",
+    "spfx",
+    "monorepo"
+  ],
+  "author": "",
+  "license": "MIT"
+}

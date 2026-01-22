@@ -1,20 +1,48 @@
 # Cybersecurity Compliance Platform
 
-A comprehensive enterprise-grade platform for cybersecurity compliance management and threat modeling.
+A comprehensive enterprise-grade **dual-frontend compliance platform** with SharePoint integration and standalone deployment options.
+
+## 🏗️ Architecture
+
+This is a **monorepo** containing:
+- **Shared Component Library** - Reusable React components
+- **Frontend 1 (SPFx)** - SharePoint Framework web parts
+- **Frontend 2 (Standalone)** - React SPA with REST API
+- **Backend API** - Node.js + Express + PostgreSQL
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed architecture documentation.
 
 ## Project Structure
 
 ```
 compliance-platform/
-├── compliance-platform-backend/    # REST API (Node.js + Express + PostgreSQL)
-│   ├── src/                        # Backend source code
-│   ├── tests/                      # API test suites
-│   └── README.md                   # Backend documentation
-├── compliance-platform-frontend/   # Web UI (Coming soon)
+├── packages/
+│   ├── shared-components/          # Shared React component library
+│   ├── frontend-spfx/              # SharePoint Framework (coming soon)
+│   ├── frontend-standalone/        # Standalone React SPA
+│   └── backend/                    # REST API (Node.js + Express + PostgreSQL)
+├── package.json                    # Monorepo root configuration
+├── pnpm-workspace.yaml             # PNPM workspace definition
+├── ARCHITECTURE.md                 # Detailed architecture docs
 └── README.md                       # This file
 ```
 
 ## Features
+
+### ✅ Shared Components
+- Assessment management components
+- Threat modeling components
+- Evidence management components
+- API adapter pattern (REST + SharePoint)
+- Common UI components
+
+### ✅ Standalone Frontend (Complete)
+- Modern React SPA with Material-UI
+- NIST Cybersecurity Framework management
+- STRIDE threat modeling interface
+- Evidence upload and management
+- Interactive dashboards and visualizations
+- PDF report generation
 
 ### ✅ Backend (Complete)
 - JWT authentication & authorization
@@ -24,51 +52,110 @@ compliance-platform/
 - PDF report generation (Compliance & Threat reports)
 - 60+ RESTful API endpoints with full documentation
 
-### 🚧 Frontend (Next Phase)
-- Modern web UI
-- Interactive dashboards
-- Compliance visualization
-- Threat modeling interface
+### 🚧 SharePoint Frontend (Coming Soon)
+- SPFx web parts for SharePoint Online
+- SharePoint list integration
+- Document library for evidence
+- Tenant-isolated data storage
 
 ## Quick Start
 
-### Backend Setup
+### Prerequisites
+
+- Node.js 18+ ([Download](https://nodejs.org/))
+- PNPM 8+ (`npm install -g pnpm`)
+- PostgreSQL 18+ ([Download](https://www.postgresql.org/download/))
+
+### Installation
 
 ```bash
-cd compliance-platform-backend
+# Clone repository
+git clone https://github.com/KulbirJ/compliance-platform.git
+cd compliance-platform
 
-# Install dependencies
-npm install
+# Install all dependencies
+pnpm install
 
-# Configure environment
-cp .env.example .env
-# Edit .env with your database credentials
+# Build shared components
+pnpm build:shared
+```
 
-# Setup PostgreSQL database
+### Database Setup
+
+```bash
+# Create database
 psql -U postgres -c "CREATE DATABASE compliance_platform;"
+
+# Run migrations
+cd packages/backend
 psql -U postgres -d compliance_platform -f src/config/migrations/001_initial_schema.sql
 
 # Seed initial data
 node src/config/seed.js
-
-# Start server
-npm start
 ```
 
-Server runs at `http://localhost:3000`
+### Running the Application
 
-**Default credentials**: admin@example.com / admin123
+```bash
+# From monorepo root
+
+# Run backend + frontend in development mode
+pnpm dev
+
+# Or run individually:
+pnpm dev:backend        # Backend at http://localhost:3000
+pnpm dev:frontend       # Frontend at http://localhost:5173
+pnpm dev:spfx          # SPFx workbench (when available)
+```
+
+### Building for Production
+
+```bash
+# Build all packages
+pnpm build
+
+# Or build individually:
+pnpm build:shared       # Build component library
+pnpm build:backend      # Build backend
+pnpm build:frontend     # Build standalone frontend
+pnpm build:spfx        # Build SharePoint package
+```
+
+**Default credentials**: admin@example.com / admin123 (MVP: authentication bypassed)
 
 ## Technology Stack
 
+**Shared Components**:
+- React 19.x
+- Material-UI 7.x
+- Rollup bundler
+
+**Frontend (Standalone)**:
+- React 19.x + Vite 7.x
+- Material-UI 7.x + Emotion
+- React Router 7.x
+- Zustand 5.x (state management)
+- Axios for API calls
+
+**Frontend (SharePoint)** (Coming Soon):
+- SharePoint Framework 1.18.x
+- Fluent UI (React)
+- PnP/SP for SharePoint API
+- TypeScript
+
 **Backend**:
-- Node.js v24 + Express 4.18
+- Node.js 24.x + Express 4.18
 - PostgreSQL 18.1
-- JWT + bcrypt
+- JWT + bcrypt (planned SSO)
 - PDFKit for reports
 - Multer for file uploads
 
-**Frontend** (Coming): React/Vue/Angular (TBD)
+## Package Documentation
+
+- [Shared Components](packages/shared-components/README.md) - Component library documentation
+- [Standalone Frontend](packages/frontend-standalone/README.md) - React SPA documentation
+- [Backend API](packages/backend/README.md) - REST API documentation
+- [Architecture](ARCHITECTURE.md) - Detailed architecture guide
 
 ## API Endpoints
 

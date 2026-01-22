@@ -1,0 +1,51 @@
+{
+  "name": "@compliance/shared-components",
+  "version": "1.0.0",
+  "description": "Shared React components and business logic for compliance platform",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "lint": "eslint src/**/*.{js,jsx}",
+    "lint:fix": "eslint src/**/*.{js,jsx} --fix"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "@mui/material": "^5.0.0 || ^6.0.0 || ^7.0.0",
+    "@mui/icons-material": "^5.0.0 || ^6.0.0 || ^7.0.0",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
+    "react-hook-form": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@babel/preset-react": "^7.22.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "rollup": "^4.9.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "date-fns": "^4.1.0",
+    "zustand": "^5.0.3"
+  },
+  "keywords": [
+    "compliance",
+    "react",
+    "components",
+    "shared",
+    "ui-library"
+  ],
+  "author": "",
+  "license": "MIT"
+}

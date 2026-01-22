@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.11.0",
+    "libraryName": "frontend-spfx",
+    "libraryId": "51353caf-e650-4951-b605-feec2f0a8f7b",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "frontend-spfx",
+    "componentType": "webpart",
+    "framework": "react",
+    "componentName": "ComplianceAssessments",
+    "componentDescription": "Compliance assessments management",
+    "isCreatingSolution": true,
+    "isDomainIsolated": true
+  }
+}

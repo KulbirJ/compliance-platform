@@ -1,0 +1,13 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "solutionName": "frontend-spfx",
+    "componentType": "webpart",
+    "framework": "react",
+    "componentName": "ComplianceAssessments",
+    "componentDescription": "Compliance assessments management",
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "whichFolder": "subdir"
+  }
+}

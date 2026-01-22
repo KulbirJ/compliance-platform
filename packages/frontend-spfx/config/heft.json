@@ -1,0 +1,51 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/heft/v0/heft.schema.json",
+  "aliasesByName": {
+    "build": {
+      "actionName": "build",
+      "defaultParameters": []
+    },
+    "bundle": {
+      "actionName": "build",
+      "defaultParameters": ["--production"]
+    },
+    "test": {
+      "actionName": "test",
+      "defaultParameters": []
+    }
+  },
+  "phasesByName": {
+    "build": {
+      "phaseDescription": "This phase compiles the project source code.",
+      "cleanFiles": [
+        { "sourcePath": "lib" },
+        { "sourcePath": "temp" },
+        { "sourcePath": "dist" }
+      ],
+      "tasksByName": {
+        "typescript": {
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-typescript-plugin"
+          }
+        },
+        "webpack": {
+          "taskPlugin": {
+            "pluginPackage": "@microsoft/sp-build-web",
+            "pluginName": "webpack-plugin",
+            "options": {}
+          }
+        }
+      }
+    },
+    "test": {
+      "phaseDescription": "This phase runs unit tests.",
+      "tasksByName": {
+        "jest": {
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft-jest-plugin"
+          }
+        }
+      }
+    }
+  }
+}
