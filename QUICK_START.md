@@ -19,10 +19,10 @@ curl http://localhost:3000/api/health
 Invoke-RestMethod http://localhost:3000/api/health
 ```
 
-### Default Login
+### Default Login (Ofcourse you will change these creds and use some sort of secrets manager. )
 - **Email**: admin@example.com
 - **Password**: admin123
-# Ofcourse you will change these creds and use some sort of secrets manager. 
+
 ### Run Tests
 ```bash
 cd compliance-platform-backend
